@@ -26,12 +26,12 @@ The plan is to try and get through:
 
 * what is a web page made of?
   * html (HyperText Markup Language - a way of creating structured elements in a webpage)
-    * the <head> section
-    * the <body> section
+    * the `<head>` section
+    * the `<body>` section
     * basic elements
-      * <div>
-      * <span>
-      * <h1> etc
+      * `<div>`
+      * `<span>`
+      * `<h1>` etc
       * simple form elements
          * no forms posting to a webserver - just input for javascript
   * css (Cascading Style Sheets - a way of making HTML look pretty)
