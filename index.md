@@ -452,19 +452,213 @@ Think of it like cash machines. Each cash machine exposes the same functionality
 
 We are going to start by writing a bit of raw `javascript` against the `DOM`. This is the ***first*** and ***last*** time you will ever do this.
 
-If you write raw `javascript` then you have to test every time `if this is running in Chrome do this, if it is in Safari do that, if it is in Edge do something else`. This is tremendously tedious.
+If you write `javascript` against the `DOM` then you have to test every time `if this is running in Chrome do this, if it is in Safari do that, if it is in Edge do something else`. This is tremendously tedious.
 
 People ***always*** write `javascript` against libraries and frameworks that **abstract the DOM** and offer a consistent interface.
 
 Later on we will do that with `jquery`. `jquery` is considered a bit old-fashioned now, the cool kids are off on new frameworks like `jsx`, or `angular` or `react` or `ember` or `node`. But the cool kids are always off on something new n `javascript` land.
 
-### Day 2h - Javascript and its discontents
+`javascript` was written in a week to meet a sales deadline. It has a lot of problems - global state. 20 years later a lot of the things you see (frameworks, transpiled languages targetting `javascript`, tool pipelines) are new attempts to fix things laid down in a hurry in that first week.
 
+### Day 2h - Javascript in the console
 
-### Day 2x - Introduction to JFiddle
+Lets crack open our web console. Click the `hamburger` menu top left in Firefox to get the options menu and select `Web Developer`:
+
+![Open the menu](./images/firefox_web_console.png)
+
+Then from the second menu select `Web  Console`:
+
+![Open the web console](./images/firefox_select_web_console.png)
+
+This gives us the webpage with the console open at the bottom:
+
+![The web console](./images/browser_with_console_open.png)
+
+We will be using only the basic menu items:
+
+* Inspector
+* Console
+
+![Console menu](./images/console_menu.png)
+
+***Lets Code!***
+
+```Javascript
+var mydiv = document.querySelector("h1");
+```
+
+When you press return this will print `undefined`.
+
+So what is this? What does it mean.
+
+`document` is an object. You remember the ***Domain Object Model*** well that object. And `document` is the name of the webpage you can see in your browser.
+
+`querySelector()` is a function on the object that does something (a switch or a dial). It performs a ***query*** using a selector. That ***selector*** as it happens has the same form as a `css` selector. So here we use `h1` but we could use any of the other `css` selectors we have played with.
+
+We pass that function a set of parameters - in this case the set only has 1 member and it is a ***string*** which describes the selector. The string is `"h1"` and the list of parameters is delimited by `(` and `)`. This enclosing pattern is the same pattern we saw with `html` tags and with `{` and `}` in `css`. It is a fundamental convention of software, languages have a way to mark ***start*** and ***end***, ***alpha*** and ***omega***.
+
+That function returns a value - that value is an ***object***.
+
+The equals operator `=` assigns that value on the right hand side to the left hand side (Arabic numerals, code words right-to-left not left-to-right).
+
+It assigns the `object` to the variable `mydiv`. `mydiv` is a name (`alice`, `bob`, `charlie`) that I, the developer will use to keep track of things. All languages have variables, in most languages they can even vary (not the mighty `Erlang` tho, there variables don't vary, and that's why we luv it).
+
+We know `mydiv` is a variable because we have declared it to be with the `var` ***keyword*** (short for variable).
+
+Each programming language has its set of ***keywords*** that you have to learn. Usually there are about 30 to 50. Keywords are often shared across languages. (See the Day 2 Appendix).
+
+Finally the operator `=` is a function and it doesn't return a result (some javascript functions do something and don't return a value, some do something and return a value).
+
+So the REPL prints the result of the last operation - and that result is `undefined` - no value returned.
+
+The last thing we haven't talked about is `;` which means ***line ending*** in javacript - it is a ***delimiter***. Again delimiters are shared across programming languages.
+
+Lets look at another function.
+
+```Javascript
+console.log("bob");
+```
+
+Press return and we get `bob`.
+
+Lets break this down again. The ***function*** is called `log` it is taking `"bob"` as a ***parameter*** and the ***function*** is attached to an ***object*** called `console`. The main webpage is an ***object*** called `document` and it turns out the `console` is a webpage ***object*** called `console`.
+
+`log` takes the ***parameter*** it is given and tries to turn it into something readable then print it out in the `console`.
+
+The parameter can be an ***expression*** that evaluates to a single term:
+
+```Javascript
+console.log(3+2);
+console.log("fish" + "bicycle");
+console.log("fish" + 2);
+```
+
+Lets use this ***function*** to inspect our variable `mydiv`.
+
+```javascript
+console.log(mydiv);
+```
+
+We get a big output:
+
+![h1 object](./images/screenshot_of_h1_object.png)
+
+Eek!
+
+If we scroll down we see that there is a thing called `innerText`. This is the text that appears inside the `h1` tag. We can now use `javascript` to rewrite that:
+
+```Javascript
+mydiv.innerHTML = "banjo";
+```
+
+And it changes on the page.
+
+***Well done, you have done your first bit of  coding!***
+
+### Day 2j - Exercise
+
+Inspect the `h1` object. Select another object (eg `p`) and inspect that too. How similar and how different are they?
+
+Print the `console` object with `console.log` and inspect that. How is it different to a text object like an `h1` or a `p`?
+
+Can you ***clear*** the console?
+
+### Day 2k - Introduction to JFiddle
+
+Lets look at JFiddle - which is the most common way to get help with `html`, `css` and `javascript`.
+
+***I am trying to do X but it doesn't work, here is a link to a JFiddle, can you help me?***.
 
 https://jsfiddle.net/
 
 ### Day 2 Homework
 
 Go to https://repl.it/languages and look at the different languages and examples.
+
+Play about with the console and look at the other menus.
+
+Try and find the console in other browsers like Chrome or Safari.
+
+Read the Day 2 Appendix on Javascript Keywords
+
+### Day 2 - Appendix Javascript Keywords
+
+These are the most common javascript keywords:
+
+* boolean
+* break
+* case
+* catch
+* char
+* const
+* do
+* double
+* else
+* false
+* float
+* for
+* function
+* if
+* in
+* instanceof
+* int
+* new
+* null
+* return
+* true
+* try
+* typeof
+* var
+* while
+
+***Don't Panic!*** there is a trick to recognising them. When you write code you typically make up names for things in three styles:
+
+* functions have ***verby*** names `do_something()` like `querySelector()`
+* variables have ***nouny*** names: `house`, `car` like `mydiv`
+* booleans have ***questiony*** names: `is_condition?` like `is_valid?`, `is_visible?`
+
+Most keywords are ***little words*** (`else`, `while`), ***adjectives*** (`constant`), ***abstract nouns*** (`true`, `false`) or ***blankish verbs*** (`try`, `do`).
+
+Basically if its bland its probably a language keyword, if its vivid its not.
+
+For reference here are the rest:
+
+* abstract
+* arguments
+* await
+* byte
+* class
+* continue
+* debugger
+* default
+* delete
+* enum
+* eval
+* export
+* extends
+* final
+* finally
+* goto
+* implements
+* import
+* interface
+* let
+* long
+* native
+* package
+* private
+* protected
+* public
+* short
+* static
+* super
+* switch
+* synchronized
+* this
+* throw
+* throws
+* transient
+* void
+* volatile
+* with
+* yield
