@@ -483,6 +483,8 @@ We will be using only the basic menu items:
 
 ***Lets Code!***
 
+Select the `console` menu item and type this into the console.
+
 ```Javascript
 var mydiv = document.querySelector("h1");
 ```
@@ -491,27 +493,27 @@ When you press return this will print `undefined`.
 
 So what is this? What does it mean.
 
-`document` is an object. You remember the ***Domain Object Model*** well that object. And `document` is the name of the webpage you can see in your browser.
+`document` is an object. You remember the ***Domain Object Model*** - well that object. And `document` is the name of the webpage you can see in your browser.
 
-`querySelector()` is a function on the object that does something (a switch or a dial). It performs a ***query*** using a selector. That ***selector*** as it happens has the same form as a `css` selector. So here we use `h1` but we could use any of the other `css` selectors we have played with.
+`querySelector()` is a function on the **object*** that does something (a switch or a dial). It performs a ***query*** using a selector. That ***selector*** as it happens has the same form as a `css` selector. So here we use `h1` but we could use any of the other `css` selectors we have played with.
 
 We pass that function a set of parameters - in this case the set only has 1 member and it is a ***string*** which describes the selector. The string is `"h1"` and the list of parameters is delimited by `(` and `)`. This enclosing pattern is the same pattern we saw with `html` tags and with `{` and `}` in `css`. It is a fundamental convention of software, languages have a way to mark ***start*** and ***end***, ***alpha*** and ***omega***.
 
 That function returns a value - that value is an ***object***.
 
-The equals operator `=` assigns that value on the right hand side to the left hand side (Arabic numerals, code words right-to-left not left-to-right).
+The equals operator `=` assigns that value on the right hand side to the left hand side (Arabic numerals, code works right-to-left not left-to-right, even though the actual words are written left-to-right, lololol).
 
 It assigns the `object` to the variable `mydiv`. `mydiv` is a name (`alice`, `bob`, `charlie`) that I, the developer will use to keep track of things. All languages have variables, in most languages they can even vary (not the mighty `Erlang` tho, there variables don't vary, and that's why we luv it).
 
-We know `mydiv` is a variable because we have declared it to be with the `var` ***keyword*** (short for variable).
+We know `mydiv` is a variable because we have declared it to be with the `var` ***keyword*** (shortened from variable).
 
 Each programming language has its set of ***keywords*** that you have to learn. Usually there are about 30 to 50. Keywords are often shared across languages. (See the Day 2 Appendix).
 
-Finally the operator `=` is a function and it doesn't return a result (some javascript functions do something and don't return a value, some do something and return a value).
+Finally the `=` is a ***operator*** - it takes whatever is on the right hand sign and assigns to whatever is on the left hand side. It doesn't return a result (some javascript ***functions*** do something and don't return a value, some do something and return a value, most ***operators*** don't return a value (they are implemented as ***functions*** under the hood)).
 
 So the REPL prints the result of the last operation - and that result is `undefined` - no value returned.
 
-The last thing we haven't talked about is `;` which means ***line ending*** in javacript - it is a ***delimiter***. Again delimiters are shared across programming languages.
+The last thing we haven't talked about is `;` which means ***line ending*** in javascript - it is a ***delimiter***. Again delimiters are shared across programming languages.
 
 Lets look at another function.
 
