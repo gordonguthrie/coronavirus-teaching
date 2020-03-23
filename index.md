@@ -278,7 +278,7 @@ If you have deleted it just copy this one rather than muck about rewriting it.
   body {
     background-color: linen;
   }
-  div {
+  p {
     color: maroon;
     margin-left: 40px;
   }
@@ -309,7 +309,7 @@ It is enclosed in a style tag and (conventionally) is included in the `<head>` s
       body {
         background-color: linen;
       }
-      div {
+      p {
         color: maroon;
         margin-left: 40px;
       }
