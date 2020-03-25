@@ -298,6 +298,59 @@ The format is:
 It is enclosed in a style tag and (conventionally) is included in the `<head>` section.
 
 ```HTML
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Learning Coding In Lockdown</title>
+    <meta name="description" content="My first webpage">
+    <meta name="author" content="Alice">
+  </head>
+  <body>
+    <h1 style="background-color:gray;color:orange;">Alice Asymptomatika</h1>
+    <p>I working in marketing, but am taking the opportunity to learn coding online</p>
+    <hr/>
+    I would like to learn:
+    <ul>
+      <li>
+        <p>
+          HTML <small>(Hypertext Markup Language)</small>
+        </p>
+      </li>
+      <li>
+        <p>
+          CSS <small>(Cascading Style Sheets)</small>
+        </p>
+      </li>
+      <li>
+        <p>
+          JS <small>(Javascript)</small>
+        </p>
+      </li>
+    </ul>
+    <hr/>
+    I would like to learn how to:
+    <ol>
+      <li>
+        <p>
+          Design website
+        </p>
+      </li>
+      <li>
+        <p>
+          Build an app for the phone
+        </p>
+      </li>
+      <li>
+        <p>
+          Work in tech
+        </p>
+      </li>
+    </ol>
+
+  </body>
+</html>
+
   <!doctype html>
   <html lang="en">
     <head>
