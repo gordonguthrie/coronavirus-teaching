@@ -319,12 +319,12 @@ It is enclosed in a style tag and (conventionally) is included in the `<head>` s
       <div>Hello World</div>
       <hr />
       <ul>
-        <li>hello</li>
-        <li>world</li>
+        <li<p>hello</p></li>
+        <li><p>world</p></li>
       </ul>
       <ol>
-        <li>hello</li>
-        <li>world</li>
+        <li<p>hello</p></li>
+        <li><p>world</p></li>
       </ol>
     </body>
   </html>
@@ -384,7 +384,11 @@ The comma `,` is an operator - its technically a boolean `OR` so the selector `h
 
 Add some inline styling to our CV using cascading selectors
 
-### Day 2d - External CSS files
+### Note: Day 2 was cut short by Zoom chopping us off at 40 minutes free lesson and then locking us out
+
+## Day 3 Lessons
+
+### Day 3a - External CSS files
 
 To make it easy to tech and show we are putting our CSS directly into our webpages using the `<style>` tags but this gets cumbersome.
 
@@ -414,7 +418,7 @@ We now need to make our webpage use that new font by adding it to the
     </style>
 ```
 
-### Day 2e - Exercise
+### Day 3b - Exercise
 
 Find two fonts you like that go together on Google.
 
@@ -422,7 +426,7 @@ One for the headline, one for the bodytext.
 
 Use a style sheet to apply them.
 
-### Day 2f - Introduction To REPLs
+### Day 3c - Introduction To REPLs
 
 We are going to start today by writing javascript in the browser console.
 
@@ -434,7 +438,7 @@ Here is a website with online REPLs:
 
 https://repl.it/languages
 
-### Day 2g - Javascript and its discontents
+### Day 3d - Javascript and its discontents
 
 Javascript is a standard language - all web browsers run the same Javascript. That sounds good, but...
 
@@ -460,7 +464,7 @@ Later on we will do that with `jquery`. `jquery` is considered a bit old-fashion
 
 `javascript` was written in a week to meet a sales deadline. It has a lot of problems - global state. 20 years later a lot of the things you see (frameworks, transpiled languages targetting `javascript`, tool pipelines) are new attempts to fix things laid down in a hurry in that first week.
 
-### Day 2h - Javascript in the console
+### Day 3e - Javascript in the console
 
 Lets crack open our web console. Click the `hamburger` menu top left in Firefox to get the options menu and select `Web Developer`:
 
@@ -557,7 +561,7 @@ And it changes on the page.
 
 ***Well done, you have done your first bit of  coding!***
 
-### Day 2j - Exercise
+### Day 3f - Exercise
 
 Inspect the `h1` object. Select another object (eg `p`) and inspect that too. How similar and how different are they?
 
@@ -565,7 +569,103 @@ Print the `console` object with `console.log` and inspect that. How is it differ
 
 Can you ***clear*** the console?
 
-### Day 2k - Introduction to JFiddle
+### Day 3g - JQuery in the console
+
+Because we said earlier that nobody manipulates the `DOM` raw but uses a wrapper library, lets do that now.
+
+Lets install the `jquery` library code as an ***external*** `javascript` file.
+
+in the `<head>` section lets add the line:
+
+```HTML
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+```
+
+This is just a `<script>` tag but instead of containing `javascript` it has a URL that says ***go to this web address and get a script from there and stuff it into the webpage here***.
+
+***Eek*** its time to talk about ***scope***. Scope is a messy thing - it is the context in which a thing exists. At the top level is what is called ***global*** scope.
+
+In a browser only one thing exists by default - the `document` object - the `DOM`. When we open the debugging tools, the console, it adds another thing - the `console` object.
+
+If we type in the console `x=3` we implicitly create an object called `x` in the global scope.
+
+(This is not good, it is ***global pollution*** and it comes from `javascript` being a one week rush job.)
+
+`jquery` introduces another global object which has the name `$`.
+
+Lets look at what `$` contains by popping it into `console.log()`
+
+![jquery in the console log](./images/jquery_in_console_log.png)
+
+`jquery` is just another `javascript` `object{}` - like `document` and `console`. We are going to write `javascript` `object{}`s just like it.
+
+`jquery` works by first selecting objects using `css` selectors and then calling functions that act on the selection.
+
+In the console type `$("p");`
+
+This selects all the `<p>` tags and returns an `array` of them.
+
+![jquery returns an array](./images/jquery_returns_an_array.png)
+
+An `array` is just a datastructure. You can think of it as a doocot (pigeonholes for readers furth of Scotland). A set of slots numbered 0, 1, 2, 3 into which you can put things, like letters in a pigeonhole.
+
+Note that it counts from ***zero*** and not ***one***. There is an actual reason early programming languages did that (pointer arithmetic) and there is the arsehole's smug pseudo-reason (real mathematicians count from zero). Tech is full of arseholes and identifying and ignoring them is a key skill. This question (and how people respond to a noob asking it) is a good way of doing that.
+
+Now we can use `jquery` to manipulate our `html`
+
+If we do `$("p")[0].innerText = "bingo";` in the console we should see the first paragraph change.
+
+`array`s can be iterated over with a function - ***for every slot in the doocot do something to whatever is in the slot***. We will learn how to do that later.
+
+
+### Day 3h - Writing inline javascript
+
+Remember our principle ***ABW*** lets start with a simple working webpage with some inline Javascript
+
+```HTML
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Learning Coding In Lockdown</title>
+    <meta name="description" content="My first webpage">
+    <meta name="author" content="Alice">
+    <style>
+    input[type=button] {
+      border-radius: 7px;
+      margin: 10px;
+      padding: 10px;
+      background-color: #2b88ff;
+      color: white;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    // what we are going to display
+    <input type=button value="Click Me">
+
+    // our javascript
+    <script>
+      alert("hello");
+    </script>
+
+  </body>
+</html>
+```
+
+Lets have a look at the `html` of this webpage.
+
+In the `<head>` we have some styles for an input button inside a `<style>` tag and the our `jquery` `<script>` tag.
+
+In the body we have first a single button, then some `javascript` inside a `<script>` tag.
+
+When we open the webpage we see a pop up box saying "hello". The `alert()` function does that.
+
+So the web page loads, all the javascript in the `<script>` tags runs.
+
+### Day 3i - Introduction to JFiddle
 
 Lets look at JFiddle - which is the most common way to get help with `html`, `css` and `javascript`.
 
@@ -573,7 +673,7 @@ Lets look at JFiddle - which is the most common way to get help with `html`, `cs
 
 https://jsfiddle.net/
 
-### Day 2 Homework
+### Day 3 Homework
 
 Go to https://repl.it/languages and look at the different languages and examples.
 
@@ -583,7 +683,7 @@ Try and find the console in other browsers like Chrome or Safari.
 
 Read the Day 2 Appendix on Javascript Keywords
 
-### Day 2 - Appendix Javascript Keywords
+### Day 3 - Appendix Javascript Keywords
 
 These are the most common javascript keywords:
 
