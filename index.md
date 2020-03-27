@@ -670,7 +670,6 @@ If we do `$("p")[0].innerText = "bingo";` in the console we should see the first
 
 `array`s can be iterated over with a function - ***for every slot in the doocot do something to whatever is in the slot***. We will learn how to do that later.
 
-
 ### Day 3h - Writing inline javascript
 
 Remember our principle ***ABW*** lets start with a simple working webpage with some inline Javascript
@@ -825,7 +824,7 @@ The next session will be an online lab session, in which you will make it a ***p
 
 After that we will learn how to write ***basic*** programming language to make the calculator work. From that you will add error handling and brackets in another online lab.
 
-## Day 4a More `html` - class/id/data- and their `css` selectors
+### Day 4a More `html` - class/id/data- and their `css` selectors
 
 We have seen basic `html` tags like `<p>`, `<h1>`.
 
@@ -936,7 +935,7 @@ An individual tag is represented by the box model:
 
 If you look at the `css` you will see that I have set some of these values. You will need to explore and figure out what ones you want to use to make your calculator look purty.
 
-## Day 4b More `html` - rows/columns
+### Day 4b More `html` - rows/columns
 
 We can use `<row>` and `<column>` tags to structure our layout. This is the `html`:
 
@@ -988,7 +987,7 @@ This is another example of `delimiting` - starting, some thing in the middle, en
 There are some other important `css` stuff to do with the `display` property - which again is too big a subject to cover in detail. But we can look at one super-useful style that you will need `display: none;` This makes elements invisible and we will look at it later.
 
 
-## Day 4c More `css` - pseudo-styles
+### Day 4c More `css` - pseudo-styles
 
 To make our things human-good - we need more that static styles, this is where `pseudo` selectors come in. The `pseudo` styles are transient styles. Here are two common ones:
 
@@ -1044,7 +1043,7 @@ Obviously the first selector can be anything a tag like `p`, a list of selectors
 To get kooler colours use the Adobe Color Wheel:
 https://color.adobe.com/create
 
-## Day 4d More `js` - `jquery` functions, `click`, `text`, `addClass`, `removeClass`
+### Day 4d More `js` - `jquery` functions, `click`, `text`, `addClass`, `removeClass`
 
 To build our calculator we are going to use some basic `jquery` commands.
 
@@ -1124,13 +1123,11 @@ Here is the `html`:
   </body>
 </html>
 ```
-
-Day 4e - Exercise
+### Day 4e - Exercise
 
 Build the ***ugly broken calculator***.
 
 ![Calculator](./images/ugly_broken_calculator.png)
-
 
 When you click the buttons the formula should update. The buttons should behave like buttons (ie change when the mouse is over them and they are clicked).
 
@@ -1216,7 +1213,7 @@ Here is a starter:
     </html>
 ```
 
-Day 4 Homework
+## Day 4 Homework
 
 * read up on `jquery` and the functions it offers (we are using 3.4.1)
 * look into `css` selectors again
