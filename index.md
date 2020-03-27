@@ -718,13 +718,6 @@ When we open the webpage we see a pop up box saying "hello". The `alert()` funct
 
 So the web page loads, all the javascript in the `<script>` tags runs.
 
-### Day 3i - Introduction to JFiddle
-
-Lets look at JFiddle - which is the most common way to get help with `html`, `css` and `javascript`.
-
-***I am trying to do X but it doesn't work, here is a link to a JFiddle, can you help me?***.
-
-https://jsfiddle.net/
 
 ### Day 3 Homework
 
@@ -817,3 +810,410 @@ For reference here are the rest:
 * volatile
 * with
 * yield
+
+## Day 4 Lesson
+
+The few lessons are about building a calculator.
+
+The final result will look something like this:
+
+![Calculator](./images/calculator.png)
+
+We will start by building an ***ugly***, ***broken*** calculator.
+
+The next session will be an online lab session, in which you will make it a ***pretty***, ***broken*** calculator.
+
+After that we will learn how to write ***basic*** programming language to make the calculator work. From that you will add error handling and brackets in another online lab.
+
+## Day 4a More `html` - class/id/data- and their `css` selectors
+
+We have seen basic `html` tags like `<p>`, `<h1>`.
+
+These tags on their own are slightly limited. Doing things to ***all paragraphs*** or ***all headers*** is no longer good enough.
+
+We can decorate individual tags with properties and use those. The most important property is a `class`
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Learning Coding In Lockdown</title>
+    <meta name="description" content="My first webpage">
+    <meta name="author" content="Alice">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      .button {
+        width: 70px;
+        text-align: center;
+        border-style: solid;
+        padding: 8px;
+        margin:  8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Calculator</div>
+    <div class="button">Zero</div>
+    <div class="button">One</div>
+  </body>
+</html>
+```
+
+We can now target the `<div>`s we want with our style - only style `<div>`s that have the `class` ***button*** as buttons.
+
+The second important attribute is a user-define data item. These take the form `data-` followed by a `user defined name`:
+
+```html
+<div class="button" data-buttonvalue="0">Zero</div>
+<div class="button" data-buttonvalue="1">One</div>
+```
+
+The third attribute (which is less used these days) is `id`. The standard says there should on be one `id` of a given name on a page - and most functions that work on `id` will only return one - so if you muck up and add two things can do wrong. Oftentimes we just use `class` and only have one element with that `class name` on a particular page.
+
+Each of these special tags have their own `css` selectors - and these selectors are reused by `jquery`.
+
+Here they are paired up.
+
+The `class` selector is the `class name` with a `.` before it
+
+```
+.button {
+  width: 70px;
+}
+<div class="button">Zero</div>
+```
+
+`data-` is the full data name inside `[` and `]`
+
+```
+[data-buttonvalue] {
+  ...
+}
+<div class="button" data-buttonvalue="1">One</div>
+```
+
+But you can also select specifically on the value of the `data-` item and other stuff other selectors:
+
+```
+[data-value="foo"] {
+  /* Attribute has this exact value */
+}
+
+[data-value*="foo"] {
+  /* Attribute value contains this value somewhere in it */
+}
+
+[data-value~="foo"] {
+  /* Attribute has this value in a space-separated list somewhere */
+}
+
+[data-value^="foo"] {
+  /* Attribute value starts with this */
+}
+
+[data-value|="foo"] {
+  /* Attribute value starts with this in a dash-separated list */
+}
+
+[data-value$="foo"] {
+  /* Attribute value ends with this */
+}
+```
+
+The `id` selector is the `id name` with a `#` before it
+
+```
+#equalsbutton {
+  width: 70px;
+}
+<div id="equalsbutton">=</div>
+```
+
+An individual tag is represented by the box model:
+
+![css box model](./images/css_box_model.png)
+
+If you look at the `css` you will see that I have set some of these values. You will need to explore and figure out what ones you want to use to make your calculator look purty.
+
+## Day 4b More `html` - rows/columns
+
+We can use `<row>` and `<column>` tags to structure our layout. This is the `html`:
+
+```HTML
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Learning Coding In Lockdown</title>
+    <meta name="description" content="My first webpage">
+    <meta name="author" content="Alice">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      .button {
+        width: 70px;
+        text-align: center;
+        border-style: solid;
+        padding: 8px;
+        margin:  8px;
+      }
+      column {
+        float: left;
+      }
+      .clear {
+        clear: left;
+      }
+    </style>
+  </head>
+  <body>
+  <row>
+    <column>
+      <div class="button number">0</div>
+    </column>
+    <column>
+      <div class="button number">1</div>
+    </column>
+    </row>
+    <div class="clear"><div>
+  </body>
+</html>
+```
+
+`<row>` and `<column>` don't in themselves layout tables for you - they indicate to the reader that this will be done in rows and columns - but you have to do the positioning yourself. ***Positioning is hard*** and there is no way to teach you it (mostly because I don't understand it properly myself lololol).
+
+We will use the `float` and `clear`. As you have seen normal `html` just runs up and down the page. Each item on a line - nothing side by side. `float` as a style lifts the element out of this running order and lets its float either `left` or `right`. Typically after you have floated something you need to put things back on track. That's done with a `clear`.
+
+This is another example of `delimiting` - starting, some thing in the middle, ending. In this case is it `float: left;` to start floating left followed by `clear: left;` to finish.
+
+There are some other important `css` stuff to do with the `display` property - which again is too big a subject to cover in detail. But we can look at one super-useful style that you will need `display: none;` This makes elements invisible and we will look at it later.
+
+
+## Day 4c More `css` - pseudo-styles
+
+To make our things human-good - we need more that static styles, this is where `pseudo` selectors come in. The `pseudo` styles are transient styles. Here are two common ones:
+
+* `.button:hover` is a style that applies when the mouse is over an element with the `classname` `button`.
+* `.button:active` is a style that applies when an element with the `classname` `button` has been `clicked` but not `released`
+
+The `pseudo styles` are appended to the selector with a colon, so this selector breaks down as:
+
+* `button` - a class named `button`
+* `:` - use a pseudo style
+* `active` - the pseudo style to use
+
+Obviously the first selector can be anything a tag like `p`, a list of selectors like `p, .button` some descending ones line `ol li` etc, etc
+
+```
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Learning Coding In Lockdown</title>
+        <meta name="description" content="My first webpage">
+        <meta name="author" content="Alice">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <style>
+          .button {
+            width: 70px;
+            text-align: center;
+            border-style: solid;
+            padding: 8px;
+            margin:  8px;
+          }
+          .button:hover
+          {
+            box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.25);
+          }
+          .button:active
+          {
+            background-color: #dddddd;
+          }
+        </style>
+      </head>
+      <body>
+            <div class="button number">0</div>
+            <div class="button number">1</div>
+            <div class="button number">2</div>
+            <div class="button number">3</div>
+            <div class="button number">4</div>
+          </div>
+      </body>
+    </html>
+```
+
+## Day 4d More `js` - `jquery` functions, `click`, `text`, `addClass`, `removeClass`
+
+To build our calculator we are going to use some basic `jquery` commands.
+
+We will apply functions to buttons using the `click` command. We pass this command a function (as a callback) and when the button is clicked the function runs.
+
+That function will set some text using the `text` command and also add and remove classes with `addClass` and `removeClass`.
+
+By creating a style that uses `display: none;` we can then hide and show things.
+
+Here is the `html`:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Learning Coding In Lockdown</title>
+    <meta name="description" content="My first webpage">
+    <meta name="author" content="Alice">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      .button {
+        border-style: solid;
+      }
+      column {
+        float: left;
+      }
+      .clear {
+        clear: both;
+      }
+      .hide {
+        display: none;
+      }
+      #proud, .button {
+        width:      80px;
+        text-align: center;
+        padding:    8px;
+        margin:     8px;
+      }
+    </style>
+  </head>
+  <body>
+  <row>
+    <column>
+      <div class="button number hideable">Zero</div>
+    </column>
+    <column>
+      <div class="button number hideable">One</div>
+    </column>
+    </row>
+    <div class="clear"><div>
+    <row>
+      <column>
+        <div class="button hidebutton">Hide</div>
+      </column>
+      <column>
+        <div class="button showbutton">Show</div>
+      </column>
+      </row>
+      <div class="clear" id="proud"></div>
+      <script>
+      var hidefn = function () {
+        console.log("hide clicked");
+        $(".hideable").addClass("hide");
+        $("#proud").text("I hided it!")
+      };
+
+      var showfn = function () {
+        console.log("show clicked");
+        $(".hideable").removeClass("hide");
+        $("#proud").text("I shown it!")
+      };
+
+      $(".hidebutton").click(hidefn);
+      $(".showbutton").click(showfn);
+      </script>
+  </body>
+</html>
+```
+
+Day 4e - Exercise
+
+Build the ***ugly broken calculator***.
+
+![Calculator](./images/ugly_broken_calculator.png)
+
+
+When you click the buttons the formula should update. The buttons should behave like buttons (ie change when the mouse is over them and they are clicked).
+
+Don't worry about the layout for now.
+
+To get the formula to build you will need to create a variable something like this:
+
+```javascript
+var formula;`
+```
+
+And then in the clicks do soemthing like this:
+
+```javascript
+formula += buttonclicked;
+```
+
+where you have gotten the value `buttonclicked` with the `jquery` `data` function.
+
+Don't try and make it too pretty, and don't try and lay it out yet.
+
+Here is a starter:
+
+```HTML
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Learning Coding In Lockdown</title>
+        <meta name="description" content="My first webpage">
+        <meta name="author" content="Alice">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <style>
+          .button {
+            width: 70px;
+            text-align: center;
+            border-style: solid;
+            padding: 8px;
+            margin:  8px;
+          }
+          .number {
+            border-color: darkred;
+            color: darkred;
+          }
+          .operator {
+            border-color: darkblue;
+            color: darkblue;
+          }
+          .display {
+            border-style: solid;
+            border-width: thin;
+            border-color: lightgrey;
+            width: 70px;
+            padding: 8px;
+            display: block;
+          }
+        </style>
+      </head>
+      <body>
+        <div>
+            <h2>Formula</h2>
+            <div class="display" id="formula"></div>
+          </div>
+          <div>
+            <div class="button number">Zero</div>
+          </div>
+
+          <div>
+            <div class="button operator">Plus</div>
+
+          </div>
+
+          <script>
+            var formula = ""
+
+            var buttonclickfn = function (e) {
+              console.log("button clicked");
+            }
+
+            $(".number, .operator").click(buttonclickfn);
+          </script>
+      </body>
+    </html>
+```
+
+Day 4 Homework
+
+* read up on `jquery` and the functions it offers (we are using 3.4.1)
+* look into `css` selectors again
