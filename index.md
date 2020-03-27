@@ -813,7 +813,7 @@ For reference here are the rest:
 
 ## Day 4 Lesson
 
-The few lessons are about building a calculator.
+The next few lessons are about building a calculator.
 
 The final result will look something like this:
 
@@ -979,7 +979,7 @@ We can use `<row>` and `<column>` tags to structure our layout. This is the `htm
 </html>
 ```
 
-`<row>` and `<column>` don't in themselves layout tables for you - they indicate to the reader that this will be done in rows and columns - but you have to do the positioning yourself. ***Positioning is hard*** and there is no way to teach you it (mostly because I don't understand it properly myself lololol).
+`<row>` and `<column>` don't in themselves layout tables for you - they indicate to the reader that this will be done in rows and columns - but you have to do the positioning yourself. ***Positioning is hard*** and there is no way to teach you it in this short course (mostly because I don't understand it properly myself lololol).
 
 We will use the `float` and `clear`. As you have seen normal `html` just runs up and down the page. Each item on a line - nothing side by side. `float` as a style lifts the element out of this running order and lets its float either `left` or `right`. Typically after you have floated something you need to put things back on track. That's done with a `clear`.
 
@@ -1003,7 +1003,7 @@ The `pseudo styles` are appended to the selector with a colon, so this selector 
 
 Obviously the first selector can be anything a tag like `p`, a list of selectors like `p, .button` some descending ones line `ol li` etc, etc
 
-```
+```html
     <!doctype html>
     <html lang="en">
       <head>
@@ -1040,6 +1040,9 @@ Obviously the first selector can be anything a tag like `p`, a list of selectors
       </body>
     </html>
 ```
+
+To get kooler colours use the Adobe Color Wheel:
+https://color.adobe.com/create
 
 ## Day 4d More `js` - `jquery` functions, `click`, `text`, `addClass`, `removeClass`
 
