@@ -1217,3 +1217,34 @@ Here is a starter:
 
 * read up on `jquery` and the functions it offers (we are using 3.4.1)
 * look into `css` selectors again
+
+## Day 5 - Lab Exercise
+
+Make your calculator purty. Don't make it ***identical*** to this, just make it a lot prettier than a list of buttons. Use fonts, colours, pseudo-selectors, rounding, thickness, padding, margin, whatevs makes it yours ;-)
+
+![A purty, but still broken calculator](./images/purty_broken_calculator.png)
+
+## Day 6 - Introduction To javascript
+
+### Day 6a - basic concepts
+
+In the console type:
+
+```javascript
+var int = 1;
+var float = 2.0;
+
+var number = int + float;
+print(number);
+```
+
+There are 6 types:
+
+* `string`
+* `number`
+* `undefined`
+* `null`
+* `boolean`
+* `symbol`
+
+and `object` - a compound type.
