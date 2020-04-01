@@ -1361,8 +1361,8 @@ In this case it ***verbs*** (add) ***a*** and ***b*** and ***c*** - it does the 
 
 ### Day 6b - Functions Exercise
 
-1 create your own function. It has a `length` property, what do you think that means?
-2 what happens if you call your function with too few or too many arguments?
+1. create your own function. It has a `length` property, what do you think that means?
+2. what happens if you call your function with too few or too many arguments?
 
 ### Day 6c - Arrays
 
@@ -1410,10 +1410,10 @@ myarray.push("blah");
 
 ### Day 6c - Array Exercises
 
-1 create you own `array` and then `push` something. What happens?
-2 `pop` has a sister function `pop`, what does it do?
-3 what does the function `.toString()` do?
-4 find some built in `function`s of `array`s using the `console` and then look them up on Google, what do they do?
+1. create you own `array` and then `push` something. What happens?
+2. `pop` has a sister function `pop`, what does it do?
+3. what does the function `.toString()` do?
+4. find some built in `function`s of `array`s using the `console` and then look them up on Google, what do they do?
 
 ### Day 6d - Objects
 
@@ -1444,8 +1444,8 @@ myobj.a_function = myfun;
 
 ### Day 6d - Objects Exercise
 
-1 create an `object` and put a function into it, then invoke the function from the object name.
-2 inspect the `object` in the `console`
+1. create an `object` and put a function into it, then invoke the function from the object name.
+2. inspect the `object` in the `console`
 
 ### Day 6e - Flow Control 1 - `if` statements
 
@@ -1502,8 +1502,8 @@ Flow control with `if` is super-common, I can't think of a programming language 
 
 ### Day 6e - Flow Control I Exercises
 
-1 Write a function that takes a `string` as a parameter and checks if the `string` contains the letter `a` (in either upper or lower case). Use the built-in `string` functions `.includes()` and `.toLowerCase()` or `.toUpperCase()`.
-1 Write a function that takes a `string` as a parameter and returns the rest of the `string` after the first occurrence of `a`. Find the string functions you need online.
+1. Write a function that takes a `string` as a parameter and checks if the `string` contains the letter `a` (in either upper or lower case). Use the built-in `string` functions `.includes()` and `.toLowerCase()` or `.toUpperCase()`.
+1. Write a function that takes a `string` as a parameter and returns the rest of the `string` after the first occurrence of `a`. Find the string functions you need online.
 
 ### Day 6f - Flow Control II - the `switch` statement
 
@@ -1553,9 +1553,9 @@ You can replace `break` with `return` and the function will just `return` from i
 
 ### Day 6f - Flow Control II Exercises
 
-1 play about with the example, add other cases for `objects` and `functions`
-2 play about with the example - take a `break` out, what happens?
-3 play about the example replace `break`s with `return`s what happens?
+1. play about with the example, add other cases for `objects` and `functions`
+2. play about with the example - take a `break` out, what happens?
+3. play about the example replace `break`s with `return`s what happens?
 
 ### Day 6g - Flow Control II - for loops
 
@@ -1601,8 +1601,8 @@ for (var i; i < no_of_words; i++) {
 
 ### Day 6f - Flow Control III Exercises
 
-1 you can count a loop backwards
+1. you can count a loop backwards
       * for the ***first*** element have `i` start as `no_of_words - 1`
       * for the ***second*** element test if `i` is negative
       * for the ***third*** element use the `decrement` operator `--`
-2 `for` has a little chum called `while` that is not used as much. Look it up on the internet and try and write a `while` loop
+2. `for` has a little chum called `while` that is not used as much. Look it up on the internet and try and write a `while` loop
