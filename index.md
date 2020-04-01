@@ -1453,8 +1453,17 @@ We will be writing longer code fragments so from now on they will be contained i
 
 The most common flow control is the `if` statements which might be paired up with `else if` and `else`. Here's an example:
 
-```javascript
-<script>
+```html
+<!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Learning Coding In Lockdown</title>
+      <meta name="description" content="My first webpage">
+      <meta name="author" content="Alice">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    </head>
+    <body><script>
   var run = function (a) {
 
     console.log(a);
@@ -1467,6 +1476,8 @@ The most common flow control is the `if` statements which might be paired up wit
     }
   };
 </script>
+</body>
+</html>
 ```
 
 Instead of printing the result we can `return` different values using the `return` keyword.
