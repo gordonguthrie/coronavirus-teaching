@@ -1312,14 +1312,14 @@ var wordsarray = mysentence.split(" ");
 
 ### Day 6a - Type Exercises
 
-1 what happens when you add a `string` to a `number`? `1 + "a"`
-2 what happens when you take a `string` away from a `number`?
-3 what happens if you add a `boolean` to a `number`?
-4 what happens if you add a `boolean` to a `string`?
-5 what happens if you add a `number` to an `object`?
-6 what happens if you use the `decrement` operator `--` on a number?
-7 some other `string` functions are `.concat()`, `.includes()` - can you find other `string` functions using Google. What do they do?
-8 what happens if you split a `string` with an empty string `""` in the `.split()` function?
+1. what happens when you add a `string` to a `number`? `1 + "a"`
+2. what happens when you take a `string` away from a `number`?
+3. what happens if you add a `boolean` to a `number`?
+4. what happens if you add a `boolean` to a `string`?
+5. what happens if you add a `number` to an `object`?
+6. what happens if you use the `decrement` operator `--` on a number?
+7. some other `string` functions are `.concat()`, `.includes()` - can you find other `string` functions using Google. What do they do?
+8. what happens if you split a `string` with an empty string `""` in the `.split()` function?
 
 ### Day 6b - Functions
 
