@@ -1226,17 +1226,69 @@ Make your calculator purty. Don't make it ***identical*** to this, just make it 
 
 ## Day 6 - Introduction To javascript
 
-### Day 6a - basic concepts
+### Day 6a - Types
 
 In the console type:
 
 ```javascript
 var int = 1;
 var float = 2.0;
+var boolean = true;
+var string = "abcdefg"
+
+var object = {};
+var array =["a", 2, true];
 
 var number = int + float;
 print(number);
 ```
+
+`numbers` have various operators that they can use - the normal numeric ones:
+
+* `+` for adding
+* `-` for subtracting
+* `*` for multiplying
+* `/` for dividing (does floating point division)
+
+but also some less familiar ones:
+
+* `**` for `exponential`s `2**4` is ***2 to the power 4*** ie ***2 times 2 times 2 times 2***
+* '%' is the `remainder` for integer division `9 % 2` gives ***2 goes into 9 4 times, remainder 1 - return 1***
+
+ha-ha, I thought the carat operator `^` was the `exponent` becuz other programming languages, turns out its the `bitwise XOR` operator - check all the things kidz.
+
+There are also a some of compound operators:
+
+* '++'
+* '--'
+* '+='
+* '-='
+
+The double operators are `increment` and `decrement` and are used like this:
+
+```javascript
+var n = 99;
+n++;
+```
+
+`+=` and `-=` are syntactic sugar - they mean you have to type less. Consider the following statement:
+
+```javascript
+var html = "<tag>";
+html = html + "some content";
+html = html + "</tag>";
+```
+
+This can be rewritten using `+=` to get rid of the second ***html*** on each line:
+
+```javascript
+var html = "<tag>";
+html += "some content";
+html += "</tag>";
+```
+
+so `+=` just means ***add this to me***.
+
 
 There are 6 types:
 
@@ -1247,4 +1299,299 @@ There are 6 types:
 * `boolean`
 * `symbol`
 
-and `object` - a compound type.
+`object` and `array` are data structures.
+
+`strings` types have various built in functions. Lets look at one we will need later to build our calculator.
+
+```javascript
+var mysentence = "now is the time for all good men to come to the aid of the party";
+var wordsarray = mysentence.split(" ");
+```
+
+`.split()` chops up a `string` into an `array` of `string`s using the `string` you pass in to guide the knife. So by passing a space `" "` we turn a sentence into an array of words.
+
+### Day 6a - Type Exercises
+
+1 what happens when you add a `string` to a `number`? `1 + "a"`
+2 what happens when you take a `string` away from a `number`?
+3 what happens if you add a `boolean` to a `number`?
+4 what happens if you add a `boolean` to a `string`?
+5 what happens if you add a `number` to an `object`?
+6 what happens if you use the `decrement` operator `--` on a number?
+7 some other `string` functions are `.concat()`, `.includes()` - can you find other `string` functions using Google. What do they do?
+8 what happens if you split a `string` with an empty string `""` in the `.split()` function?
+
+### Day 6b - Functions
+
+`functions` are core building blocks of `javascript`.
+
+A `function` is defined as so:
+
+```javascript
+var myfun = function (x, y, z) {
+  console.log(x);
+  console.log(y);
+  console.log(z);
+};
+```
+
+To invoke that function you would call it:
+
+```javascript
+myfun(1, "a", true);
+```
+
+A `function` may or may not have one or more `return` statements. If it doesn't have a `return` it returns the value `undefined` when invoked. When it hits a `return` statement it terminates (we will see more of this in the section on flow control).
+
+Lets break that down. `myfun` is the name we have given the `function` it is just a normal `javascript` variable.
+
+The phrase `function(...)` is the `function` declaration - it tells the run time to make a `function`. Inside the brackets is the argument list, separated by commas `x`, `y` and `z`. So when we call this function, in this case it expects 3 arguments.
+
+Functions can have 0 to (depending on the browser) 65535, 262143, 131071 or 1048576 arguments, but frankly that's silly. If you have more than 5 you are probably doing it wrong.
+
+Remember `function`s can be thought of as ***verbs*** so the argument list is the list of things you ***verb***. Image a function like:
+
+```javascript
+var add = function(a, b, c) {
+  return a + b + c;
+}
+```
+
+In this case it ***verbs*** (add) ***a*** and ***b*** and ***c*** - it does the verb on the arguments.
+
+### Day 6b - Functions Exercise
+
+1 create your own function. It has a `length` property, what do you think that means?
+2 what happens if you call your function with too few or too many arguments?
+
+### Day 6c - Arrays
+
+An array is a set of values.
+
+```
+var myarray = [1, "b", true];
+```
+
+You see that an `array` isn't typed - it takes any sort of element - but normally you try and write ***homogenous*** `array`s. So an `array` that only contains `number`s or `string`s or `function`s or `object`s.
+
+Some languages enforce homogenous `array`s but `javascript` doesn't. Mixing your `array`s is like mixing your drinks only the hangover is much, much worse, lololol.
+
+`array` elements are like slots. You have a `length` property and a `.forEach()` function (among many others). `.forEach()` takes a `function` as a parameter and applies that function to each element in the `array`.
+
+We can see what properties and functions an `array` has using the console.
+
+![JQuery array properties](./images/jquery_array_properties.png)
+
+You can pull elements out with an `index`. Beware this index starts a `0`.
+
+The array syntax looks like this:
+
+```javascript
+// for properties
+var len = myarray.length;
+//for elements
+var first_element = myarray[0];
+var second_element = myarray[1];
+```
+
+The `forEach` function takes a function as an argument:
+
+```javascript
+var myfun = function (x) {console.log(x);}
+
+myarray.forEach(myfun);
+```
+
+You can add elements to an array with `push`
+
+```Javascript
+myarray.push("blah");
+```
+
+### Day 6c - Array Exercises
+
+1 create you own `array` and then `push` something. What happens?
+2 `pop` has a sister function `pop`, what does it do?
+3 what does the function `.toString()` do?
+4 find some built in `function`s of `array`s using the `console` and then look them up on Google, what do they do?
+
+### Day 6d - Objects
+
+An `object` is just a container of values (and usually some of these values are functions).
+
+```Javascript
+var myobj = {};
+```
+
+You can put named elements into an object:
+```Javascript
+myobj.size = 3;
+```
+
+and then pull them out with the equivalent property.
+
+We can see this in the console:
+
+![Javascript objects](./images/javascript_object_properties.png)
+
+You can also put functions into `object`s:
+
+```javascript
+var myfun = function () {console.log("Howdy!");};
+var myobj = {};
+myobj.a_function = myfun;
+```
+
+### Day 6d - Objects Exercise
+
+1 create an `object` and put a function into it, then invoke the function from the object name.
+2 inspect the `object` in the `console`
+
+### Day 6e - Flow Control 1 - `if` statements
+
+We will be writing longer code fragments so from now on they will be contained in functions that can be invoked.
+
+The most common flow control is the `if` statements which might be paired up with `else if` and `else`. Here's an example:
+
+```javascript
+<script>
+  var run = function (a) {
+
+    console.log(a);
+    if (a > 0) {
+      console.log("greater than zero");
+    } else if (a === 0) {
+      console.log("is zero");
+    } else {
+      console.log("less than 0");
+    }
+  };
+</script>
+```
+
+Instead of printing the result we can `return` different values using the `return` keyword.
+
+```javascript
+<script>
+  var run = function (a) {
+
+    console.log(a);
+    if (a > 0) {
+      return "greater than zero";
+    } else if (a === 0) {
+      return "is zero";
+    } else {
+      return "less than 0";
+    }
+  };
+</script>
+```
+
+Flow control with `if` is super-common, I can't think of a programming language that I have used that doesn't use them.
+
+### Day 6e - Flow Control I Exercises
+
+1 Write a function that takes a `string` as a parameter and checks if the `string` contains the letter `a` (in either upper or lower case). Use the built-in `string` functions `.includes()` and `.toLowerCase()` or `.toUpperCase()`.
+1 Write a function that takes a `string` as a parameter and returns the rest of the `string` after the first occurrence of `a`. Find the string functions you need online.
+
+### Day 6f - Flow Control II - the `switch` statement
+
+The `switch` statement (known in other languages as `case`) is a basic flow control.
+
+```javascript
+<script>
+  var run = function (a) {
+
+    console.log(a);
+    var type = typeof(a);
+    switch (type) {
+      case "string":
+        console.log("its a string");
+        break;
+      case "number":
+        console.log("its a number");
+        break;
+      default:
+        console.log("its something else: " + type);
+      };
+      console.log("I'm done here");
+  };
+</script>
+```
+
+lets break it down. `switch` is the keyword and it chooses a branch to execute based on the value it is passed `(type)`. It is inside brackets because it needs to be evaluated, it could be `(1+3)` or `(a/b)` or `(typeof(a))`
+
+It then opens a pair of curly brackets `{` and `}` which define the body of the `switch` statement.
+
+That statement has two defined `case`s and a `default` `case` for anything. It drops through the `case` statement looking for a match.
+
+So if we call `run(3)` what happens?
+
+* the value of `type` is `number`
+* so it hits the first case and says ***is type equal to "string"?***, ***nope, lets continue***.
+* then it drops to the 2nd case and goes ***is type equal to "number"?**, ***well why, yes it is, lets do this*** so:
+    * it then runs `console.log("its a number");`
+    * and then hits `break` and goes ***ok I am done here***
+    * and it jumps to the final `}` and continues
+* now it hits `console.log("I'm done here");` and prints that
+
+The `break` statement is important - if you miss it it carries ob dropping through
+
+You can replace `break` with `return` and the function will just `return` from inside the `switch` statement. (if you do that the line `console.log("I'm done here");` won't run tho.
+
+
+### Day 6f - Flow Control II Exercises
+
+1 play about with the example, add other cases for `objects` and `functions`
+2 play about with the example - take a `break` out, what happens?
+3 play about the example replace `break`s with `return`s what happens?
+
+### Day 6g - Flow Control II - for loops
+
+A for loop just does something repeatedly. This function starts with a sentence, breaks it down into an array or words and loops over the array printing each word.
+
+```javascript
+<script>
+var run = function () {
+
+  var sentence = "now is the winter of our discontent made glorious summer by this Son of York"
+  var wordarray = sentence.split(" ");
+  var no_of_words = wordarray.length;
+  var i = 0;
+
+  console.log(wordarray);
+  console.log("there are " + no_of_words + " words");
+  console.log("i is set to: " + i);
+
+  for (i; i < no_of_words; i++) {
+    console.log("word " + i + " is " + wordarray[i]);
+  };
+};
+</script>
+```
+
+Lets break it down. It starts with the keyword `for` which takes a three part expression `(i; i < no_of_words; i++)`.
+
+* the *first* expression is ***where am I starting from?*** - here we are starting from `0` - the value of `i` is zero.
+* the *second* expression is ***when do I stop?***. The loop will continue as long as this expression evalutates to `true`. In this case `no_of_words` is `15` so first time at the rodeo `i < no_of_words` is `0 < 15` which is `true` so lets loop.
+* the *third* expression is the *what do I do afterwards?*** which in this case is `i++` which means ***bump i by 1***
+
+Second time round the rodeo `i` is now `1` and `i < no_of_words` is `1 < 15` which is `true` so we go round the rodeo again, bumping `i`.
+
+Eventually `i` hits 15 and we stop. Because 15 is the number of words in the `array` we stop before we get there becuz ***stupid*** counting from `0` in arrays ;-) suckeee, suckee, suckee.
+
+You often see these loops written with the variable declared in the loop itself:
+
+```javascript
+for (var i; i < no_of_words; i++) {
+  console.log("word " + i + " is " + wordarray[i]);
+};
+```
+
+### Day 6f - Flow Control III Exercises
+
+1 you can count a loop backwards
+      * for the ***first*** element have `i` start as `no_of_words - 1`
+      * for the ***second*** element test if `i` is negative
+      * for the ***third*** element use the `decrement` operator `--`
+2 `for` has a little chum called `while` that is not used as much. Look it up on the internet and try and write a `while` loop
