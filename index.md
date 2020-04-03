@@ -1415,7 +1415,9 @@ myarray.push("blah");
 3. what does the function `.toString()` do?
 4. find some built in `function`s of `array`s using the `console` and then look them up on Google, what do they do?
 
-### Day 6d - Objects
+## Day 7 Moar Javascript
+
+### Day 7a - Objects
 
 An `object` is just a container of values (and usually some of these values are functions).
 
@@ -1442,12 +1444,12 @@ var myobj = {};
 myobj.a_function = myfun;
 ```
 
-### Day 6d - Objects Exercise
+### Day 7a - Objects Exercise
 
 1. create an `object` and put a function into it, then invoke the function from the object name.
 2. inspect the `object` in the `console`
 
-### Day 6e - Flow Control 1 - `if` statements
+### Day 7b - Flow Control 1 - `if` statements
 
 We will be writing longer code fragments so from now on they will be contained in functions that can be invoked.
 
@@ -1500,12 +1502,12 @@ Instead of printing the result we can `return` different values using the `retur
 
 Flow control with `if` is super-common, I can't think of a programming language that I have used that doesn't use them.
 
-### Day 6e - Flow Control I Exercises
+### Day 7b - Flow Control I Exercises
 
 1. Write a function that takes a `string` as a parameter and checks if the `string` contains the letter `a` (in either upper or lower case). Use the built-in `string` functions `.includes()` and `.toLowerCase()` or `.toUpperCase()`.
 1. Write a function that takes a `string` as a parameter and returns the rest of the `string` after the first occurrence of `a`. Find the string functions you need online.
 
-### Day 6f - Flow Control II - the `switch` statement
+### Day 7c - Flow Control II - the `switch` statement
 
 The `switch` statement (known in other languages as `case`) is a basic flow control.
 
@@ -1551,13 +1553,13 @@ The `break` statement is important - if you miss it it carries ob dropping throu
 You can replace `break` with `return` and the function will just `return` from inside the `switch` statement. (if you do that the line `console.log("I'm done here");` won't run tho.
 
 
-### Day 6f - Flow Control II Exercises
+### Day 7c - Flow Control II Exercises
 
 1. play about with the example, add other cases for `objects` and `functions`
 2. play about with the example - take a `break` out, what happens?
 3. play about the example replace `break`s with `return`s what happens?
 
-### Day 6g - Flow Control II - for loops
+### Day 7d - Flow Control III - for loops
 
 A for loop just does something repeatedly. This function starts with a sentence, breaks it down into an array or words and loops over the array printing each word.
 
@@ -1599,10 +1601,18 @@ for (var i; i < no_of_words; i++) {
 };
 ```
 
-### Day 6f - Flow Control III Exercises
+### Day 7d - Flow Control III Exercises
 
 1. you can count a loop backwards
       * for the ***first*** element have `i` start as `no_of_words - 1`
       * for the ***second*** element test if `i` is negative
       * for the ***third*** element use the `decrement` operator `--`
 2. `for` has a little chum called `while` that is not used as much. Look it up on the internet and try and write a `while` loop
+
+### Day 7e - Scope
+
+Scope is a subtle thing and needs to be carefully looked at.
+
+When I declare a variable with `var myvar = 1; where does it exist? It exists with its scope - other line of javascript that shares that scope can read and write the variable.
+
+Lets see what this means in practical terms.
