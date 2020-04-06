@@ -1310,6 +1310,13 @@ var wordsarray = mysentence.split(" ");
 
 `.split()` chops up a `string` into an `array` of `string`s using the `string` you pass in to guide the knife. So by passing a space `" "` we turn a sentence into an array of words.
 
+### Day 6a Cheatsheet - Types and operators
+
+![Cheatsheet 1 - Types](./images/cheatsheet1.png)
+
+![Cheatsheet 2 - Operators](./images/cheatsheet2.png)
+
+
 ### Day 6a - Type Exercises
 
 1. what happens when you add a `string` to a `number`? `1 + "a"`
@@ -1358,6 +1365,11 @@ var add = function(a, b, c) {
 ```
 
 In this case it ***verbs*** (add) ***a*** and ***b*** and ***c*** - it does the verb on the arguments.
+
+### Day 6b Cheatsheet - Functions
+
+![Cheatsheet 3 - Functions](./images/cheatsheet3.png)
+![Cheatsheet 3a - Invoking Functions](./images/cheatsheet3a.png)
 
 ### Day 6b - Functions Exercise
 
@@ -1408,6 +1420,10 @@ You can add elements to an array with `push`
 myarray.push("blah");
 ```
 
+### Day 6c Cheatsheet - Arrays
+
+![Cheatsheet 4 - Arrays](./images/cheatsheet4.png)
+
 ### Day 6c - Array Exercises
 
 1. create you own `array` and then `push` something. What happens?
@@ -1443,6 +1459,10 @@ var myfun = function () {console.log("Howdy!");};
 var myobj = {};
 myobj.a_function = myfun;
 ```
+
+### Day 7a Cheatsheet - Objects
+
+![Cheatsheet 5 - Objects](./images/cheatsheet5.png)
 
 ### Day 7a - Objects Exercise
 
@@ -1502,6 +1522,10 @@ Instead of printing the result we can `return` different values using the `retur
 
 Flow control with `if` is super-common, I can't think of a programming language that I have used that doesn't use them.
 
+### Day 7b Cheatsheet - if statements
+
+![Cheatsheet 6 - if statements](./images/cheatsheet6.png)
+
 ### Day 7b - Flow Control I Exercises
 
 1. Write a function that takes a `string` as a parameter and checks if the `string` contains the letter `a` (in either upper or lower case). Use the built-in `string` functions `.includes()` and `.toLowerCase()` or `.toUpperCase()`.
@@ -1552,6 +1576,9 @@ The `break` statement is important - if you miss it it carries ob dropping throu
 
 You can replace `break` with `return` and the function will just `return` from inside the `switch` statement. (if you do that the line `console.log("I'm done here");` won't run tho.
 
+### Day 7c Cheatsheet - switch statements
+
+![Cheatsheet 7 - switch statements](./images/cheatsheet7.png)
 
 ### Day 7c - Flow Control II Exercises
 
@@ -1601,6 +1628,10 @@ for (var i; i < no_of_words; i++) {
 };
 ```
 
+### Day 7d Cheatsheet - for loops
+
+![Cheatsheet 8 - for loops](./images/cheatsheet8.png)
+
 ### Day 7d - Flow Control III Exercises
 
 1. you can count a loop backwards
@@ -1609,7 +1640,12 @@ for (var i; i < no_of_words; i++) {
       * for the ***third*** element use the `decrement` operator `--`
 2. `for` has a little chum called `while` that is not used as much. Look it up on the internet and try and write a `while` loop
 
-### Day 7e - Scope
+### Day 7 Cheatsheet of cheatsheets
+
+![Cheatsheet 9 - cheatsheet of cheatsheets](./images/cheatsheet9.png)
+
+
+### Day 7f - Scope
 
 Scope is a subtle thing and needs to be carefully looked at.
 
