@@ -1578,7 +1578,7 @@ You can replace `break` with `return` and the function will just `return` from i
 
 ### Day 7c Cheatsheet - switch statements
 
-![Cheatsheet 7 - switch statements](./images/cheatsheet7.png)
+![Cheatsheet 7 - switch statements](./images/cheatsheet7X.png)
 
 ### Day 7c - Flow Control II Exercises
 
