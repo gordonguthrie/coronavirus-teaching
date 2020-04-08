@@ -1468,6 +1468,7 @@ myobj.a_function = myfun;
 
 1. create an `object` and put a function into it, then invoke the function from the object name.
 2. inspect the `object` in the `console`
+3. create a second object and put it inside the first object
 
 ### Day 7b - Flow Control 1 - `if` statements
 
@@ -1614,7 +1615,7 @@ Lets break it down. It starts with the keyword `for` which takes a three part ex
 
 * the *first* expression is ***where am I starting from?*** - here we are starting from `0` - the value of `i` is zero.
 * the *second* expression is ***when do I stop?***. The loop will continue as long as this expression evalutates to `true`. In this case `no_of_words` is `15` so first time at the rodeo `i < no_of_words` is `0 < 15` which is `true` so lets loop.
-* the *third* expression is the *what do I do afterwards?*** which in this case is `i++` which means ***bump i by 1***
+* the *third* expression is the ***what do I do afterwards?*** which in this case is `i++` which means ***bump i by 1***
 
 Second time round the rodeo `i` is now `1` and `i < no_of_words` is `1 < 15` which is `true` so we go round the rodeo again, bumping `i`.
 
@@ -1644,11 +1645,169 @@ for (var i; i < no_of_words; i++) {
 
 ![Cheatsheet 9 - cheatsheet of cheatsheets](./images/cheatsheet9.png)
 
+### Day 8a - Flow Controls IV try/catch
 
-### Day 7f - Scope
+Another common flow of control mechanism is `try`, `catch` and `throw'.
 
-Scope is a subtle thing and needs to be carefully looked at.
+Lets see how it works.
 
-When I declare a variable with `var myvar = 1; where does it exist? It exists with its scope - other line of javascript that shares that scope can read and write the variable.
+```html
+<!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Learning Coding In Lockdown</title>
+      <meta name="description" content="My first webpage">
+      <meta name="author" content="Alice">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    </head>
+    <body>
+    <script>
+  var run = function (input) {
 
-Lets see what this means in practical terms.
+    var result;
+
+    try {
+      console.log("going to try and do something");
+      result = somenotrealfunction(input);
+      console.log("result is " + result);
+    } catch (err) {
+      console.log("got an error: " + err);
+    }
+
+  };
+</script>
+</body>
+</html>
+```
+
+If we call the `run` function with a number like `run(3)` then the code will `try` and run the code block that follows the keyword. If something goes wrong execution will be suspended and the error will be ***thrown*** and the `catch` clause will get it. The error will be stored in the variable defined in the `(` and `)` after `catch` and can then be processed in the code between `{` and `}`.
+
+We can explictly throw messages using `throw` as well.
+
+```
+<!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Learning Coding In Lockdown</title>
+      <meta name="description" content="My first webpage">
+      <meta name="author" content="Alice">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    </head>
+    <body>
+    <script>
+  var run = function (input) {
+
+    var result;
+
+    try {
+      if (typeof(input) === "object") {
+        throw("got an object");
+      } else {
+        result = somenotrealfunction(input);
+        console.log("result is " + result);
+      }
+    } catch (err) {
+      switch (err) {
+        case "got an object":
+          console.log("got an object");
+          break;
+        default:
+          console.log("We got an error" + err);
+        }
+    }
+  };
+</script>
+</body>
+</html>
+```
+
+### 8a Cheatsheets - try/catch
+
+![Cheatsheet 10 - try/catch](./images/cheatsheet10.png)
+
+### 8a - Flow Of Control IV Exercises
+
+1. Write function that turns a string into uppercase by calling `.uppercase()`. Wrap that function in a `try`/`catch` and try it with a `number` and a `boolean`.
+2. You can also have `finally` clauses in `try`/`catch`. Google them and see what they do
+
+### 8b By reference and by value
+
+What happens when we pass in a value to a function? Lets see:
+
+![Passing a value to a function](./images/code_pass_by_value.png)
+
+We pass in the value of `myval` at `123` this is mapped to the variable `x` which is then incremented by `1` to get `124`. But `myval` remains at `123`.
+
+So what happens when we pass in an object?
+
+![Passing an object to a function](./images/code_pass_by_reference.png)
+
+That's different - we passed in `myobj` and it was mapped to `x` But when we set `x`'s parameter `bingo` to `die in flames` we see that the change is reflected back in `myobj`.
+
+`strings` and `number`s are said to passed to functions ***by value*** - that is to say a copy of the value is made and passed it.
+
+By contrast `object`s are passed ***by reference*** - the variables `myobj` and `x` are pointers to a thing - and its the same thing. Change it in one place, you change it in both.
+
+### Day 8b - by reference and by value Exercises
+
+1. are `boolean`s copied `by value` or `by reference`?
+2. are `array`s copied `by value` or `by reference`?
+
+### 8c Scope and Closures
+
+`scope` is an important concept - it refers to the logical area that a variable can be accessed from.
+
+Look at the following set of commands in the console:
+
+![Shared Scope](./images/code_shared_scope.png)
+
+We define `x` in the ***global*** scope and then `myfun1(...)` and `myfun2(...)` can use it. We don't pass `x` in as an argument here - it exists inside the function. The technical term for this is a ***closure*** - the function has ***enclosed*** the global variable and captured it. When we change the value of that variable in the console we change it in the functions.
+
+Lets define a 3rd function that has an argument called `x`:
+
+![Functional scope](./images/code_function_scope.png)
+
+This ***seems*** useful - we share data between many functions and then we can build little systems and its all good. Well it starts easy, but it soon gets horrific.
+
+Back in 1986 the 22nd line of my PhD used a global variable in a `Fortran` `COMMON DATA` structure. 2 years later I spent 8 months looking for that bug, all day every day, 8 months man and boy.
+
+Lets look at a 4th function:
+
+![Moar Functional scope](./images/code_function_scope_2.png)
+
+So how does this work? In each of our functions we call `console.log(x);` - Javascript says ***where do I get this*** `x` ***from***? If it is in the arguments of or is declared with a `var` in the calling function then we use that one. If not we try and find a global variable.
+
+![Moar Functional scope](./images/code_function_scope_3.png)
+
+Here we see we have defined a function with a variable `no_such_variable`. `javascript` accepts the definition as correct - but when we try to run it, it goes looking for the `symbol` `no_such_variable` to get its value and it doesn't exist.
+
+What is the right thing to do? The right thing to do is use `function`s to create `object`s that have `object` level scope for their variables.
+
+Here's an example:
+
+```javascript
+<script>
+
+var newsquarefn = function () {
+  var x = 99;
+  var y = 100;
+  var areafn = function () { return x * y;};
+  var obj = {area: areafn};
+  return obj;
+}
+
+</script>
+```
+
+When we can use this `function` to create protected variables as we see when we use it in the `console`:
+
+![Protected variables](./images/code_protected_variables.png)
+
+`x` and `y` are defined in the scope of the `function` `newsquarefn` and we can't access them from the `console`.
+
+### 8c Exercises
+
+1. Write a function that creates a new circle with hidden variables for its `radius` and `pi` (you can set `pi` to 3.14) and an `area` function that returns its area
+2. add a new `function` to your circle-creating function that allows you to change the radius of the circle - but only if you pass in a number (hint: the built-in `function` `typeof(...)`)
