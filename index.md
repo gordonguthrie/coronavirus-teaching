@@ -1729,7 +1729,7 @@ We can explictly throw messages using `throw` as well.
 
 ### 8a - Flow Of Control IV Exercises
 
-1. Write function that turns a string into uppercase by calling `.uppercase()`. Wrap that function in a `try`/`catch` and try it with a `number` and a `boolean`.
+1. Write function that turns a string into uppercase by calling `.toUpperCase()`. Wrap that function in a `try`/`catch` and try it with a `number` and a `boolean`.
 2. You can also have `finally` clauses in `try`/`catch`. Google them and see what they do
 
 ### 8b By reference and by value
