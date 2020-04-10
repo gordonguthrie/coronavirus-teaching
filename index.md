@@ -1811,3 +1811,92 @@ When we can use this `function` to create protected variables as we see when we 
 
 1. Write a function that creates a new circle with hidden variables for its `radius` and `pi` (you can set `pi` to 3.14) and an `area` function that returns its area
 2. add a new `function` to your circle-creating function that allows you to change the radius of the circle - but only if you pass in a number (hint: the built-in `function` `typeof(...)`)
+
+### Day 9 - Programming Lab
+
+In the lab we will be writing `javascript` inside a webpage with `jquery` to talk to the `dom`.
+
+We have a basic ***Always Be Working*** page to start with:
+
+![An Always Be Working Page](./images/always_be_working_page.png)
+
+Heres the `html`:
+
+```HTML
+<!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Learning Coding In Lockdown</title>
+      <meta name="description" content="My first webpage">
+      <meta name="author" content="Alice">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+      <style>
+      * {
+          font-family: Roboto, sans-serif;
+        }
+      .button {
+        width: 70px;
+        text-align: center;
+        border-style: solid;
+      }
+      #results {
+        border-style: solid;
+        border-color: red;
+      }
+      input, #results, .button {
+        padding: 8px;
+        margin:  8px;
+      }
+      input, #results {
+        width: 120px;
+      }
+    </style>
+    </head>
+    <body>
+
+      <input type="text">
+      <div id="results">&nbsp;</div>
+      <div class="button">Press me</div>
+
+    <script>
+      // Javascript goes here
+    </script>
+</body>
+</html>
+```
+
+1. Exercise 1 - what is in the ***Always Be Working Page***?
+    * what does line 5 do?
+    * what does line 8 do?
+    * what does line 9 do?
+    * what does the (new) tag on line 34 do?
+    * what are the funny characters in line 35?
+    * what are the two man bits of an `html` page?
+
+2. Exercise 2 - turn the ABW page into an app
+    * type some text into the input (at the top)
+    * press the button
+    * the text you typed is displayed in the results (in red).
+
+3. Exercise 3 - process your input
+    * ***based on the page from Exercise 2***
+    * now process the text when you click the button
+    * the first letter is uppercase and the rest are lowercase - (ie "bob is a wank" become "Bob Is A Wank")
+    * ***hint*** `.split()`
+    * ***hint*** `array`s
+    * ***hint*** `.toUpperCase()`
+
+4. Exercise 4 - take the button away
+    * ***based on take the page from Exercise 3***
+    * have the text rewrite when you type into the input box character by character
+    * ***hint*** instead of the `jquery` `function` `.click()` on the button use `.change()` on the input
+
+5. Exercise 5 - flow of Control
+    * ***based on take the page from Exercise 4***
+    * add a `checkbox` to the page
+    * when the `checkbox` is not selected do "Bob Is A Wank"
+    * when the `checkbox is selected do "bOB iS a wANK"
+    * ***hint*** for the checkbox `<input type="checkbox" name="my_display_style" value="my_display">`
+    * ***hint*** to give it a label `<label for="my_checkbox">Change capitalisation</label>`
