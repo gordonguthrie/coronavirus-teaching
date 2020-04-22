@@ -1645,6 +1645,8 @@ for (var i; i < no_of_words; i++) {
 
 ![Cheatsheet 9 - cheatsheet of cheatsheets](./images/cheatsheet9.png)
 
+## Day 8
+
 ### Day 8a - Flow Controls IV try/catch
 
 Another common flow of control mechanism is `try`, `catch` and `throw'.
@@ -1812,7 +1814,7 @@ When we can use this `function` to create protected variables as we see when we 
 1. Write a function that creates a new circle with hidden variables for its `radius` and `pi` (you can set `pi` to 3.14) and an `area` function that returns its area
 2. add a new `function` to your circle-creating function that allows you to change the radius of the circle - but only if you pass in a number (hint: the built-in `function` `typeof(...)`)
 
-### Day 9 - Programming Lab
+## Day 9 - Programming Lab
 
 In the lab we will be writing `javascript` inside a webpage with `jquery` to talk to the `dom`.
 
@@ -1900,3 +1902,148 @@ Heres the `html`:
     * when the `checkbox is selected do "bOB iS a wANK"
     * ***hint*** for the checkbox `<input type="checkbox" name="my_display_style" value="my_display">`
     * ***hint*** to give it a label `<label for="my_checkbox">Change capitalisation</label>`
+
+## Day 10 - Programming Lab - Building A Calculator
+
+On day 4 we built an ugly calculator that built up a formula but which didn't work.
+
+Today we will turn that into a working calculator.
+
+Lets see what that involves ***in pseudo code***. Pseudo code is just a way of writing out how your application will work. When we build software that is ***Always Be Working*** we have to figure out the different **working*** stages our application will go through - pseudo code is one way of doing that.
+
+As you write more code this will become natural and you will be able to ***see*** how you will attack the problem. This comes with practice.
+
+One of the important takeaways from this lesson is that there is ***no correct way*** to build applications - there are always different approaches you could take, and different approaches involve different trade-offs.
+
+### When To Calculate
+
+There are roughly two approaches to running the calculation:
+* calculate as you go along
+* wait until the formula is finished before calculating
+
+The calculation process is basically the same - we have to do the following:
+
+The rough process is the same:
+
+```
+take a string `1+22-333/-4*5`
+turn it into an array `["1", "+", "2", "2", "-", "3", "3", "3", "/", "-", "4", "*", "5"]`
+run a `calculate` function over the array in a `.forEach` function
+```
+
+Within the `calculate` function we need to:
+
+```
+accumulate the numbers
+  turn "1" "2" into "12" and then the number 12
+  turn "-" "3" "4" into "-34" and then the number -34
+store numbers as we go along
+  first number is 12
+store operators as we go along
+ the operator is +
+acculumulate the next number
+apply the operator to the two numbers
+```
+
+There is a problem with ***calculating as you go along*** - lets follow the users key strokes:
+
+```
+1         % calculates to 1
+1*        % calculates to ???
+1*2       % calculates to 2
+1*22      % calculates to 22
+```
+
+How do you know when the user has finished? You will have to backtrack in your aglo.
+
+### Handling Errors
+
+You will have to handle error conditions. The following are valid expressions:
+
+* `1+2`
+* `1-3`
+* `1*4`
+* `1/5`
+* `11+66`
+* `-11+66`
+* `11+-66`
+* `11*-77`
+* `11/-88`
+* generally `number1 operator1 number2 operator2 number3....` where `operator` includes the `+-`, `*-` and `/-` pairs
+
+The following expressions must throw an error:
+
+* `*1`
+* `/2`
+* `1+*3`
+* generally `number operator1 operator2` where `operator2 is not -`
+
+The following expressions ***might*** throw an error, its up to you:
+
+* `+1`
+* `1*+2` (ie `+2` is a valid way of writing `2` as a positive number
+* generally (....left as an exercise for the reader)
+
+There are two ways to handle errors:
+
+* at input time
+* on calculation
+
+Doing ***on input*** validation involves enabling and disabling clicks and looks something like this:
+
+```
+STARTING CONDITION
+
+if
+  there are no values entered then enable all the number buttons and the -  but disable + / *
+end
+
+FIRST CHARACTER
+
+if
+  the user enters - disable -
+  the user can then only enter a number
+else if
+   the user enters a number enable + - / *
+end
+
+SECOND AND SUBSEQUENT CHARACTERS
+
+if
+   last input was a number enable + - / *
+else if
+   last input was one of + / * disable = / * but keep - enabled
+else if
+   last input was - disable + - / *
+end
+```
+
+If we do this then we know that the formula is correct so when we calculate the result.
+
+If we decided to handle this on calculation then we have to stripe this logic through the calculator logic
+
+### Display Results
+
+We have two options here:
+
+* we can display the results as we go along, so as the users types in values they get a result
+* we can only show the results when the user presses `=`
+
+### Design Choices
+
+We see that the ***calculate*** options can be pick'n'mixed with the ***display*** options and the ***error*** options.
+
+* do the user validation on input (control the buttons) calculate the result as we go along and display the final result when the user presses equal
+* do the user validation on input, collect the formula, calculate it when the user presses `=` and then display it
+* let the user press any buttons, then when they press `=` run the calculate function - if we get any operator where we don't expect them just return `error` otherwise calculate
+* we can recalculate on everykey stroke - but from the beginning so we don't need to backtrack
+
+### The Trade Offs
+
+If we do validation on input then we separate error handling from normal execution this is ***good***.
+
+Except in this case error handling is much easier in the calculation because we don't need to enable and disable buttons so our code is shorter which is also ***good*** but we have to mix calculation and error handling which is ***bad***.
+
+We can calculate as we go along - gives user feedback which is good - but we have to hold the result and the state of the calculation one step back.
+
+...and so on
