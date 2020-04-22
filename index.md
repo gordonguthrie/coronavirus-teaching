@@ -1909,7 +1909,7 @@ On day 4 we built an ugly calculator that built up a formula but which didn't wo
 
 Today we will turn that into a working calculator.
 
-Lets see what that involves ***in pseudo code***. Pseudo code is just a way of writing out how your application will work. When we build software that is ***Always Be Working*** we have to figure out the different **working*** stages our application will go through - pseudo code is one way of doing that.
+Lets see what that involves ***in pseudo code***. Pseudo code is just a way of writing out how your application will work. When we build software that is ***Always Be Working*** we have to figure out the different ***working*** stages our application will go through - pseudo code is one way of doing that.
 
 As you write more code this will become natural and you will be able to ***see*** how you will attack the problem. This comes with practice.
 
@@ -1918,6 +1918,7 @@ One of the important takeaways from this lesson is that there is ***no correct w
 ### When To Calculate
 
 There are roughly two approaches to running the calculation:
+
 * calculate as you go along
 * wait until the formula is finished before calculating
 
@@ -1931,6 +1932,8 @@ turn it into an array `["1", "+", "2", "2", "-", "3", "3", "3", "/", "-", "4", "
 run a `calculate` function over the array in a `.forEach` function
 ```
 
+You will use the function `.parseInt(...)` to turns strings like "123" and "-456" into the numbers 123 and -456.
+
 Within the `calculate` function we need to:
 
 ```
@@ -1941,7 +1944,7 @@ store numbers as we go along
   first number is 12
 store operators as we go along
  the operator is +
-acculumulate the next number
+accumulate the next number
 apply the operator to the two numbers
 ```
 
@@ -1954,7 +1957,7 @@ There is a problem with ***calculating as you go along*** - lets follow the user
 1*22      % calculates to 22
 ```
 
-How do you know when the user has finished? You will have to backtrack in your aglo.
+How do you know when the user has finished? You will have to backtrack in your algo.
 
 ### Handling Errors
 
