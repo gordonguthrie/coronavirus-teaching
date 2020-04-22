@@ -1951,10 +1951,10 @@ apply the operator to the two numbers
 There is a problem with ***calculating as you go along*** - lets follow the users key strokes:
 
 ```
-1         % calculates to 1
-1*        % calculates to ???
-1*2       % calculates to 2
-1*22      % calculates to 22
+3         % calculates to 3
+3*        % calculates to ???
+3*4       % calculates to 12
+3*45      % calculates to 125
 ```
 
 How do you know when the user has finished? You will have to backtrack in your algo.
@@ -2015,7 +2015,7 @@ SECOND AND SUBSEQUENT CHARACTERS
 if
    last input was a number enable + - / *
 else if
-   last input was one of + / * disable = / * but keep - enabled
+   last input was one of + / * disable + / * but keep - enabled
 else if
    last input was - disable + - / *
 end
